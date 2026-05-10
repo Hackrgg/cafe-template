@@ -11,7 +11,7 @@ class CoffeeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Coffee Selection',
+      title: 'BLK قهوة',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -32,20 +32,21 @@ class CoffeeSelectionPage extends StatefulWidget {
 class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
   late final PageController _pageController;
 
+  static const Color _accent = Color(0xFFF5F0E8);
+
   final List<CoffeeItem> _items = const [
     CoffeeItem(
-      name:'Mocha',
+      name: 'Mocha',
       subtitle: 'Chocolate & creamy',
       imagePath: 'assets/images/mocha.png',
       description:
           'Rich espresso mixed with smooth milk and deep chocolate notes.',
       price: 3,
       rating: 4.8,
-      accentColor: Color(0xFFFFC46B),
       gradient: [
-        Color(0xFF2B1710),
-        Color(0xFF5A3421),
-        Color(0xFF8C5A36),
+        Color(0xFF0A0A0A),
+        Color(0xFF1A1210),
+        Color(0xFF2E1F18),
       ],
     ),
     CoffeeItem(
@@ -56,11 +57,10 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
           'Pure and intense coffee taste for those who love a sharp energy kick.',
       price: 5,
       rating: 4.9,
-      accentColor: Color(0xFFFF9A62),
       gradient: [
-        Color(0xFF120D0B),
-        Color(0xFF3B241B),
-        Color(0xFF6D4737),
+        Color(0xFF0A0A0A),
+        Color(0xFF130E0C),
+        Color(0xFF221710),
       ],
     ),
     CoffeeItem(
@@ -71,11 +71,10 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
           'A softer coffee experience with silky steamed milk and balanced taste.',
       price: 4,
       rating: 4.7,
-      accentColor: Color(0xFF8ED8FF),
       gradient: [
-        Color(0xFF3C241A),
-        Color(0xFF8A6A57),
-        Color(0xFFD8C2B1),
+        Color(0xFF0A0A0A),
+        Color(0xFF17120F),
+        Color(0xFF2A1F18),
       ],
     ),
   ];
@@ -119,7 +118,7 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
         ),
         child: Stack(
           children: [
-            _AnimatedBackgroundGlow(color: item.accentColor),
+            _AnimatedBackgroundGlow(color: _accent),
             SafeArea(
               child: Column(
                 children: [
@@ -132,8 +131,11 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                           width: 46,
                           height: 46,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.10),
+                            color: Colors.white.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.10),
+                            ),
                           ),
                           child: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -142,34 +144,21 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                           ),
                         ),
                         const Spacer(),
-                        const Column(
-                          children: [
-                            Text(
-                              'What would you like to drink today?',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            SizedBox(height: 2),
-                            Text(
-                              'Coffee Selection',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                          ],
+                        Image.asset(
+                          'assets/images/blk_logo.png',
+                          height: 48,
+                          color: Colors.white,
                         ),
                         const Spacer(),
                         Container(
                           width: 46,
                           height: 46,
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.10),
+                            color: Colors.white.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.10),
+                            ),
                           ),
                           child: const Icon(
                             Icons.favorite_border_rounded,
@@ -177,6 +166,16 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'What would you like today?',
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.45),
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 0.3,
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -220,6 +219,7 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                             child: _CoffeeSlideItem(
                               coffee: coffee,
                               isActive: isActive,
+                              accent: _accent,
                             ),
                           ),
                         );
@@ -242,25 +242,27 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                               color: Colors.white,
                               fontSize: 34,
                               fontWeight: FontWeight.w900,
+                              letterSpacing: -0.5,
                             ),
                           ),
                           const SizedBox(height: 6),
                           Text(
                             item.subtitle,
                             style: TextStyle(
-                              color: item.accentColor,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
+                              color: Colors.white.withValues(alpha: 0.45),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: 1.2,
                             ),
                           ),
                           const SizedBox(height: 10),
                           Text(
                             item.description,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.white70,
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.55),
                               fontSize: 14,
-                              height: 1.45,
+                              height: 1.5,
                             ),
                           ),
                         ],
@@ -290,14 +292,18 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                                     const EdgeInsets.symmetric(vertical: 15),
                                 decoration: BoxDecoration(
                                   color: selected
-                                      ? item.accentColor
-                                      : Colors.white.withOpacity(0.10),
+                                      ? _accent
+                                      : Colors.white.withValues(alpha: 0.07),
                                   borderRadius: BorderRadius.circular(18),
+                                  border: Border.all(
+                                    color: selected
+                                        ? _accent
+                                        : Colors.white.withValues(alpha: 0.10),
+                                  ),
                                   boxShadow: selected
                                       ? [
                                           BoxShadow(
-                                            color: item.accentColor
-                                                .withOpacity(0.35),
+                                            color: _accent.withValues(alpha: 0.20),
                                             blurRadius: 18,
                                             spreadRadius: 1,
                                           ),
@@ -309,8 +315,8 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: selected
-                                        ? Colors.black87
-                                        : Colors.white,
+                                        ? Colors.black
+                                        : Colors.white.withValues(alpha: 0.6),
                                     fontWeight: FontWeight.w800,
                                     fontSize: 15,
                                   ),
@@ -334,10 +340,10 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                         child: Container(
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.10),
+                            color: Colors.white.withValues(alpha: 0.06),
                             borderRadius: BorderRadius.circular(24),
                             border: Border.all(
-                              color: Colors.white.withOpacity(0.08),
+                              color: Colors.white.withValues(alpha: 0.08),
                             ),
                           ),
                           child: Row(
@@ -373,40 +379,39 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             behavior: SnackBarBehavior.floating,
-                            backgroundColor: Colors.black87,
+                            backgroundColor: const Color(0xFF1A1A1A),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
                             content: Text(
-                              '${item.name} - $_selectedSize selected',
+                              '${item.name} · $_selectedSize added to order',
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
                         );
                       },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 280),
+                      child: Container(
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(22),
-                          gradient: LinearGradient(
-                            colors: [
-                              item.accentColor,
-                              Colors.white.withOpacity(0.95),
-                            ],
-                          ),
+                          color: _accent,
                           boxShadow: [
                             BoxShadow(
-                              color: item.accentColor.withOpacity(0.35),
+                              color: _accent.withValues(alpha: 0.20),
                               blurRadius: 22,
                               spreadRadius: 1,
                             ),
                           ],
                         ),
                         child: const Text(
-                          'Confirm Selection',
+                          'Order Now',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.black87,
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
+                            letterSpacing: 0.5,
                           ),
                         ),
                       ),
@@ -427,10 +432,12 @@ class _CoffeeSelectionPageState extends State<CoffeeSelectionPage> {
 class _CoffeeSlideItem extends StatelessWidget {
   final CoffeeItem coffee;
   final bool isActive;
+  final Color accent;
 
   const _CoffeeSlideItem({
     required this.coffee,
     required this.isActive,
+    required this.accent,
   });
 
   @override
@@ -439,7 +446,7 @@ class _CoffeeSlideItem extends StatelessWidget {
       ignoring: true,
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 250),
-        opacity: isActive ? 1 : 0.55,
+        opacity: isActive ? 1 : 0.45,
         child: Stack(
           alignment: Alignment.center,
           clipBehavior: Clip.none,
@@ -452,12 +459,12 @@ class _CoffeeSlideItem extends StatelessWidget {
                 height: isActive ? 210 : 170,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: coffee.accentColor.withOpacity(isActive ? 0.14 : 0.08),
+                  color: Colors.white.withValues(alpha: isActive ? 0.05 : 0.02),
                   boxShadow: [
                     BoxShadow(
-                      color: coffee.accentColor.withOpacity(isActive ? 0.22 : 0.10),
-                      blurRadius: 45,
-                      spreadRadius: 8,
+                      color: Colors.white.withValues(alpha: isActive ? 0.08 : 0.03),
+                      blurRadius: 60,
+                      spreadRadius: 12,
                     ),
                   ],
                 ),
@@ -503,21 +510,22 @@ class _InfoBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
-        color: Colors.black.withOpacity(0.14),
+        color: Colors.black.withValues(alpha: 0.20),
       ),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white, size: 16),
+          Icon(icon, color: Colors.white.withValues(alpha: 0.6), size: 16),
           const SizedBox(width: 8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.white70,
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.40),
                   fontSize: 11,
                   fontWeight: FontWeight.w600,
+                  letterSpacing: 0.8,
                 ),
               ),
               const SizedBox(height: 2),
@@ -551,7 +559,7 @@ class _AnimatedBackgroundGlow extends StatelessWidget {
           right: -60,
           child: _BlurCircle(
             size: 220,
-            color: color.withOpacity(0.20),
+            color: color.withValues(alpha: 0.06),
           ),
         ),
         Positioned(
@@ -559,15 +567,15 @@ class _AnimatedBackgroundGlow extends StatelessWidget {
           left: -60,
           child: _BlurCircle(
             size: 260,
-            color: color.withOpacity(0.16),
+            color: color.withValues(alpha: 0.05),
           ),
         ),
         Positioned(
-          top:250,
-          left:50,
+          top: 250,
+          left: 50,
           child: _BlurCircle(
-            size:120,
-            color: Colors.white.withOpacity(0.05),
+            size: 120,
+            color: Colors.white.withValues(alpha: 0.03),
           ),
         ),
       ],
@@ -607,7 +615,6 @@ class CoffeeItem {
   final String description;
   final int price;
   final double rating;
-  final Color accentColor;
   final List<Color> gradient;
 
   const CoffeeItem({
@@ -617,7 +624,6 @@ class CoffeeItem {
     required this.description,
     required this.price,
     required this.rating,
-    required this.accentColor,
     required this.gradient,
   });
 }
