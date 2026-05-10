@@ -30,8 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
       title: '20% off all espresso drinks',
       sub: 'Every day 2–5 PM',
       icon: Icons.local_cafe_rounded,
-      colors: [Color(0xFF1A0A00), Color(0xFF3D1E00)],
-      accent: Color(0xFFFF9A62),
+      colors: [Color(0xFF1A1410), Color(0xFF0F0C09)],
+      accent: Color(0xFFF5F0E8),
     ),
     _PromoItem(
       label: 'NEW',
@@ -39,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
       title: 'Oat Milk Latte is here',
       sub: 'Creamy, plant-based & bold',
       icon: Icons.eco_rounded,
-      colors: [Color(0xFF001A0A), Color(0xFF003D1E)],
-      accent: Color(0xFF4DFFB4),
+      colors: [Color(0xFF111411), Color(0xFF0C0F0C)],
+      accent: Color(0xFFC9A84C),
     ),
     _PromoItem(
       label: 'LOYALTY',
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: 'Earn a free drink at 10 stamps',
       sub: 'Collect a stamp every order',
       icon: Icons.star_rounded,
-      colors: [Color(0xFF1A1400), Color(0xFF3D3000)],
+      colors: [Color(0xFF161410), Color(0xFF0F0D09)],
       accent: Color(0xFFC9A84C),
     ),
   ];
@@ -62,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
       description: 'Rich espresso mixed with smooth milk and deep chocolate notes.',
       price: 3.0,
       rating: 4.8,
-      accentColor: Color(0xFFFFC46B),
-      gradient: [Color(0xFF2B1710), Color(0xFF5A3421), Color(0xFF8C5A36)],
+      accentColor: Color(0xFFC9A84C),
+      gradient: [Color(0xFF0D0B09), Color(0xFF111009), Color(0xFF0A0A0A)],
     ),
     _FeaturedItem(
       name: 'Espresso',
@@ -73,8 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
       description: 'Pure and intense coffee taste for those who love a sharp energy kick.',
       price: 2.5,
       rating: 4.9,
-      accentColor: Color(0xFFFF9A62),
-      gradient: [Color(0xFF120D0B), Color(0xFF3B241B), Color(0xFF6D4737)],
+      accentColor: Color(0xFFF5F0E8),
+      gradient: [Color(0xFF0A0A0A), Color(0xFF0D0D0D), Color(0xFF0A0A0A)],
     ),
     _FeaturedItem(
       name: 'Latte',
@@ -84,8 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
       description: 'A softer coffee experience with silky steamed milk and balanced taste.',
       price: 4.0,
       rating: 4.7,
-      accentColor: Color(0xFF8ED8FF),
-      gradient: [Color(0xFF3C241A), Color(0xFF8A6A57), Color(0xFFD8C2B1)],
+      accentColor: Color(0xFFC9A84C),
+      gradient: [Color(0xFF0C0B09), Color(0xFF100F0D), Color(0xFF0A0A0A)],
     ),
   ];
 
@@ -141,9 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Good morning', style: TextStyle(color: Colors.white.withValues(alpha: 0.5), fontSize: 13)),
+                          Text('قهوة زاكية. كل يوم.', style: TextStyle(color: Colors.white.withValues(alpha: 0.45), fontSize: 12, fontWeight: FontWeight.w400)),
                           const SizedBox(height: 2),
-                          const Text('What are you having?', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
+                          const Text("What's your order?", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
                         ],
                       ),
                       const Spacer(),
@@ -190,8 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: isActive ? 210 : 170,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: item.accentColor.withValues(alpha: isActive ? 0.14 : 0.06),
-                                      boxShadow: [BoxShadow(color: item.accentColor.withValues(alpha: isActive ? 0.22 : 0.08), blurRadius: 45, spreadRadius: 8)],
+                                      color: item.accentColor.withValues(alpha: isActive ? 0.18 : 0.07),
+                                      boxShadow: [BoxShadow(color: item.accentColor.withValues(alpha: isActive ? 0.38 : 0.10), blurRadius: 60, spreadRadius: 14)],
                                     ),
                                   ),
                                 ),
@@ -523,8 +523,8 @@ class _AnimatedGlow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(top: -90, right: -60, child: _BlurCircle(size: 220, color: color.withValues(alpha: 0.18))),
-        Positioned(bottom: -120, left: -60, child: _BlurCircle(size: 260, color: color.withValues(alpha: 0.14))),
+        Positioned(top: -80, right: -50, child: _BlurCircle(size: 280, color: color.withValues(alpha: 0.32))),
+        Positioned(bottom: -100, left: -50, child: _BlurCircle(size: 320, color: color.withValues(alpha: 0.22))),
       ],
     );
   }
