@@ -340,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Promo banner carousel
                 SizedBox(
-                  height: 72,
+                  height: 68,
                   child: PageView.builder(
                     controller: _bannerController,
                     itemCount: _promos.length,
@@ -350,26 +350,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(14),
                           child: Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(colors: p.colors, begin: Alignment.centerLeft, end: Alignment.centerRight),
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(color: p.accent.withValues(alpha: 0.2)),
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(color: p.accent.withValues(alpha: 0.18)),
                             ),
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                             child: Row(
                               children: [
                                 Container(
-                                  width: 40,
-                                  height: 40,
+                                  width: 36,
+                                  height: 36,
                                   decoration: BoxDecoration(
-                                    color: p.accent.withValues(alpha: 0.15),
+                                    color: p.accent.withValues(alpha: 0.12),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(p.icon, color: p.accent, size: 20),
+                                  child: Icon(p.icon, color: p.accent, size: 18),
                                 ),
-                                const SizedBox(width: 12),
+                                const SizedBox(width: 10),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -378,24 +378,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Row(
                                         children: [
                                           Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
                                             decoration: BoxDecoration(
-                                              color: p.accent.withValues(alpha: 0.2),
-                                              borderRadius: BorderRadius.circular(4),
+                                              color: p.accent.withValues(alpha: 0.18),
+                                              borderRadius: BorderRadius.circular(3),
                                             ),
-                                            child: Text(p.label, style: TextStyle(color: p.accent, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 0.8)),
+                                            child: Text(p.label, style: TextStyle(color: p.accent, fontSize: 8, fontWeight: FontWeight.w800, letterSpacing: 0.8)),
                                           ),
-                                          const SizedBox(width: 6),
-                                          Text(p.labelAr, style: TextStyle(color: p.accent.withValues(alpha: 0.5), fontSize: 10)),
+                                          const SizedBox(width: 5),
+                                          Text(p.labelAr, style: TextStyle(color: p.accent.withValues(alpha: 0.45), fontSize: 9)),
                                         ],
                                       ),
-                                      const SizedBox(height: 4),
-                                      Text(p.title, style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w700)),
-                                      Text(p.sub, style: TextStyle(color: Colors.white.withValues(alpha: 0.45), fontSize: 11)),
+                                      const SizedBox(height: 2),
+                                      Text(p.title, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, height: 1.2)),
+                                      Text(p.sub, style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 10, height: 1.2)),
                                     ],
                                   ),
                                 ),
-                                Icon(Icons.chevron_right_rounded, color: p.accent.withValues(alpha: 0.5), size: 18),
+                                Icon(Icons.chevron_right_rounded, color: p.accent.withValues(alpha: 0.4), size: 16),
                               ],
                             ),
                           ),
